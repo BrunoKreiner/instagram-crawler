@@ -1,5 +1,7 @@
 # Web Crawler, WDB Module Mini-Challenge 2
 
+![example workflow](https://github.com/github/docs/actions/workflows/main.yaml/badge.svg)
+
 # Motivation
 
 Automated extraction of data from social platforms like Instagram enables us to gain invaluable insight into social  trends, accounts engagement value, or current (social and political) trends. This information is not relevant only for research, but also for marketing and product design purposes, because it enables the stakeholders to understand their clients or audience better. 
