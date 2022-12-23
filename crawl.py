@@ -4,7 +4,7 @@ warnings.simplefilter(action='ignore', category=FutureWarning)
 
 import sys
 sys.path.insert(0, '../')
-from utils.database import InstagramDatabase
+from src.database import InstagramDatabase
 
 import os
 from dotenv import load_dotenv
@@ -13,7 +13,7 @@ load_dotenv()
 from selenium import webdriver
 from selenium.webdriver.edge.service import Service
 from webdriver_manager.microsoft import EdgeChromiumDriverManager
-from utils.instagram_crawler import InstagramCrawler
+from src.instagram_crawler import InstagramCrawler
 
 def print_checkpoint_messages(path, last_post_crawled, current_post):
     """Prints useful comments to retry crawling of posts.
@@ -36,7 +36,7 @@ if __name__ == "__main__":
     parser.add_argument('-only-get-post-urls', default=False, type=bool, help="Default: False. If set to True, script ends after storing all post urls.")
     parser.add_argument('-from-post-url', help="Default: None. If set to a valid post-url, the crawler will begin crawling posts from the index of the given post url in the parseable file of post urls. ATTENTION: Instaram Posts will be stored in the following format: 'https://www.instagram.com/p/[post id]/'")
     args = parser.parse_args()
-    DB = InstagramDatabase('./data/tabular/' + args.account_name + '.csv')
+    DB = InstagramDatabase(os.getenv("DB_CONNECTION_STRING"), args.account_name)
     driver = webdriver.ChromiumEdge(service=Service(EdgeChromiumDriverManager().install()))
     crawler = InstagramCrawler(driver, DB)
     

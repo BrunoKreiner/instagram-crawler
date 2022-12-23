@@ -1,5 +1,5 @@
 import unittest
-from utils.database import InstagramDatabase
+from src.database import InstagramDatabase
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -10,7 +10,7 @@ from selenium.webdriver.edge.options import Options
 from selenium.webdriver.edge.service import Service
 from selenium.webdriver.remote.webelement import WebElement
 from webdriver_manager.microsoft import EdgeChromiumDriverManager
-from utils.instagram_crawler import InstagramCrawler, get_selector
+from src.instagram_crawler import InstagramCrawler, get_selector
 from selenium.common.exceptions import TimeoutException
 from selenium.common.exceptions import NoSuchElementException
 import config
@@ -39,7 +39,7 @@ class TestHelper():
 class TestInstagramCrawler(unittest.TestCase):
 
     def setUp(self): 
-        self.DB = InstagramDatabase(os.getenv("DB_CONNECTION_STRING"))
+        self.DB = InstagramDatabase(os.getenv("DB_CONNECTION_STRING"), os.getenv("INSTAGRAM_USERNAME"))
         self.driver = webdriver.ChromiumEdge(service=Service(EdgeChromiumDriverManager().install()))
         self.InstagramCrawler = InstagramCrawler(self.driver, self.DB)
         self.TestHelper = TestHelper()

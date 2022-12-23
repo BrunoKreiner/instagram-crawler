@@ -1,6 +1,6 @@
 # Web Crawler, WDB Module Mini-Challenge 2
 
-![example workflow](https://github.com/github/docs/actions/workflows/main.yaml/badge.svg)
+[![Selenium Selectors Test](https://github.com/BrunoKreiner/instagram-crawler/actions/workflows/main.yaml/badge.svg)](https://github.com/BrunoKreiner/instagram-crawler/actions/workflows/main.yaml)
 
 # Motivation
 

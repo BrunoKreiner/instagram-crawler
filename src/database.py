@@ -5,15 +5,23 @@ class InstagramDatabase():
     """Class to implement database for InstagramCrawler.
     """
 
-    def __init__(self, path, columns = ["post_url", "is_post", "commenter", "text", "replies_to", "replies_count", "likes", "date", "crawl_time"]):
+    def __init__(self, path, file_name, columns = ["post_url", "is_post", "commenter", "text", "replies_to", "replies_count", "likes", "date", "crawl_time"]):
         self.columns = columns
-        self.path = path
+        if (path == None) or (path == ""):
+            raise ValueError("Path to database is not defined.")
+        if (file_name == None) or (file_name == ""):
+            raise ValueError("File name is not defined.")
+        self.file_name = file_name
+        self.path = os.path.join(path, self.file_name + ".csv")
 
-        if os.path.exists(path):
-            # File with
-            self.df = pd.read_csv(path, low_memory=False)
+        #create path and file if it doesnt exist
+        if os.path.exists(self.path):
+            self.df = pd.read_csv(self.path, low_memory=False)
         else:
             self.df = pd.DataFrame(columns=columns)
+
+            if not os.path.exists(path):
+                os.makedirs(path, exist_ok=True)
             self.save_db_state()
 
     def get_entry(self, idx):
