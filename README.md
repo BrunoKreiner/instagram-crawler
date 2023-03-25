@@ -1,5 +1,6 @@
 # Web Crawler, WDB Module Mini-Challenge 2
 
+This says failing because I don't know how to setup selenium driver with github actions:
 [![Selenium Selectors Test](https://github.com/BrunoKreiner/instagram-crawler/actions/workflows/main.yaml/badge.svg)](https://github.com/BrunoKreiner/instagram-crawler/actions/workflows/main.yaml)
 
 # Motivation
